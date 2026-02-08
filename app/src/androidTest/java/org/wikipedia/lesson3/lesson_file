@@ -1,0 +1,10 @@
+
+AppCompatImageView
+id @id/imageViewCentered
+
+AppTextView
+id	@id/primaryTextView
+name="onboarding_welcome_title_v2"
+
+text	The Free Encyclopedia
+…in over 300 languages
