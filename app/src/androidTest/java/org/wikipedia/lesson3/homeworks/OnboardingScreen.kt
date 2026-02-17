@@ -17,7 +17,7 @@ val continueButton = listOf(
     R.string.onboarding_continue
 )
 
-val imageCentered = listOf(
+val image  = listOf(
     AppCompatImageView::class.java,
     R.id.imageViewCentered
 )
