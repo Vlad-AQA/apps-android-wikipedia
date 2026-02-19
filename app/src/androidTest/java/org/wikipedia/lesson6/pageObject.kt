@@ -28,7 +28,7 @@ object Onboarding : KScreen<Onboarding>() {
         containsText("found")
     }
 
-    val addLanuages = KButton {
+    val addLanguages = KButton {
         isDescendantOfA {
             withId(R.id.scrollViewContainer)
         }
@@ -52,6 +52,10 @@ fun main() {
         }
 
         tabL.selectTab(2)
+
+        tabL {
+            selectTab(2)
+        }
 
     }
 }
