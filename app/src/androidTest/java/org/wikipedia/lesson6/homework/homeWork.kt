@@ -3,6 +3,7 @@ package org.wikipedia.lesson6.homework
 
 import androidx.appcompat.widget.AppCompatImageView
 import com.kaspersky.kaspresso.screens.KScreen
+import io.github.kakaocup.kakao.check.KCheckBox
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.progress.KSeekBar
 import io.github.kakaocup.kakao.switch.KSwitch
@@ -63,7 +64,8 @@ object Theme : KScreen<Theme>() {
         isInstanceOf(AppCompatImageView::class.java)
     }
 
-    val focusMode = KSwitch {
+    // для материал свитч
+    val focusMode = KCheckBox {
         withId(R.id.theme_chooser_reading_focus_mode_switch)
     }
 
@@ -71,10 +73,7 @@ object Theme : KScreen<Theme>() {
         withId(R.id.theme_chooser_reading_focus_mode_description)
     }
     val themeText = KTextView {
-        isDescendantOfA {
-            withId(R.id.font_change_progress_bar)
-        }
-        containsText("Theme")
+        withId(R.string.color_theme_select)
     }
     val themeLight = KButton {
         withId(R.id.button_theme_light)
@@ -89,10 +88,10 @@ object Theme : KScreen<Theme>() {
         withId(R.id.button_theme_black)
     }
 
-    val mathSystemTheme = KSwitch {
+    val mathSystemTheme = KCheckBox {
         withId(R.id.theme_chooser_match_system_theme_switch)
     }
-    val imageDimmingDarkTheme = KSwitch {
+    val imageDimmingDarkTheme = KCheckBox {
         withId(R.id.theme_chooser_dark_mode_dim_images_switch)
     }
 
