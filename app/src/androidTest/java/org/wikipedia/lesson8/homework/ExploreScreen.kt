@@ -31,6 +31,7 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::CustomizeItem)
             itemType(::DataItem)
             itemType(::TopRead)
+            itemType(::InTheNews)
 
         }
     )
