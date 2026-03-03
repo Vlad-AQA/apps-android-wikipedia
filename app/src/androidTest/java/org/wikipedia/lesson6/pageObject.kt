@@ -18,6 +18,9 @@ object Onboarding : KScreen<Onboarding>() {
     val skipButton = KButton {
         withId(R.id.fragment_onboarding_skip_button)
     }
+    val continueButton = KButton {
+        withId(R.id.fragment_onboarding_forward_button)
+    }
     val image = KImageView {
         withId(R.id.imageViewCentered)
     }
