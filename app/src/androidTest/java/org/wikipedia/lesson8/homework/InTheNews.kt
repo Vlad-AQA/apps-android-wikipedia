@@ -20,7 +20,7 @@ class InTheNews(matcher: Matcher<View>) : KRecyclerItem<InTheNews>(matcher) {
     val items = KRecyclerView(
         parent = matcher,
         builder = {
-            withId(R.id.news_cardview_recycler_view)
+                withId(R.id.news_cardview_recycler_view)
         },
         itemTypeBuilder = {
             itemType(::InTheNewsItem)

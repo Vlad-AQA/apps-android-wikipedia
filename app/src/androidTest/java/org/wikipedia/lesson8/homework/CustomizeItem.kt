@@ -10,16 +10,5 @@ import org.wikipedia.R
 
 class CustomizeItem(matcher: Matcher<View>) : KRecyclerItem<CustomizeItem>(matcher) {
 
-    val image = KView(matcher) {
-        withId(R.id.view_announcement_header_image)
-    }
-    val text = KTextView(matcher) {
-        withId(R.id.view_announcement_text)
-    }
-    val customizeButton = KButton(matcher) {
-        withId(R.id.view_announcement_action_positive)
-    }
-    val goItButton = KButton(matcher){
-        withId(R.id.view_announcement_action_negative)
-    }
+
 }

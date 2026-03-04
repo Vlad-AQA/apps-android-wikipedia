@@ -5,6 +5,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import  com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.lesson8.homework.AnnouncementCard
 import org.wikipedia.lesson8.homework.ExploreScreen
 import org.wikipedia.lesson8.homework.FeaturedArticle
 import org.wikipedia.main.MainActivity
@@ -42,9 +43,20 @@ class ExploreScreenTests : TestCase() {
                             }
                         }
                     }
+                    items {
+                        step("Нажимает на кнопку Customize") {
+                            childWith<AnnouncementCard> {} perform {
+                                customize {
+                                    isDisplayed()
+                                    click()
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 

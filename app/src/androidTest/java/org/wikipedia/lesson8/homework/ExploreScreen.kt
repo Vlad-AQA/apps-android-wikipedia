@@ -33,6 +33,7 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::TopRead)
             itemType(::InTheNews)
             itemType(::FeaturedArticle)
+            itemType(::AnnouncementCard)
         }
     )
 }
