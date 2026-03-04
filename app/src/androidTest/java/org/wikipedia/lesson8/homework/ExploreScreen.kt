@@ -32,7 +32,7 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::DataItem)
             itemType(::TopRead)
             itemType(::InTheNews)
-
+            itemType(::FeaturedArticle)
         }
     )
 }
