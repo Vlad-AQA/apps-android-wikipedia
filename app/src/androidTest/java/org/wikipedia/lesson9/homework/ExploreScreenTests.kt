@@ -1,11 +1,15 @@
 package org.wikipedia.lesson9.homework
 
+import android.view.View
 import androidx.compose.ui.test.hasText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import  com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.hamcrest.Matcher
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.lesson8.homework.AnnouncementCard
+import org.wikipedia.lesson8.homework.Customize
+import org.wikipedia.lesson8.homework.CustomizeItem
 import org.wikipedia.lesson8.homework.ExploreScreen
 import org.wikipedia.lesson8.homework.FeaturedArticle
 import org.wikipedia.main.MainActivity
@@ -50,6 +54,35 @@ class ExploreScreenTests : TestCase() {
                                     isDisplayed()
                                     click()
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+            Customize {
+                step("Отключает Featured Article") {
+                    items {
+                        childAt<CustomizeItem>(1) {
+                            switcher {
+                                setChecked(false)
+                            }
+                        }
+                    }
+
+                }
+                step("Нажимает стрелку назад в верхнем тулбаре") {
+                    back {
+                        isDisplayed()
+                        click()
+                    }
+                }
+            }
+            ExploreScreen {
+                step("Проверяет, что блок Featured Article не отображается на экране Explore") {
+                    items {
+                        childWith<FeaturedArticle> {} perform {
+                            image{
+                                doesNotExist()
                             }
                         }
                     }

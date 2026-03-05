@@ -3,37 +3,44 @@ package org.wikipedia.lesson8.homework
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
+import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.feed.view.FeedView
 
-class Customize(matcher: Matcher<View>) : KRecyclerItem<Customize>(matcher) {
+object Customize: KScreen<Customize>() {
 
-    val back = KImageView(matcher) {
+    override val layoutId: Int = 0
+
+    override val viewClass: Class<*> = FeedView::class.java
+
+
+    val back = KImageView() {
         isDescendantOfA {
             withId(R.id.toolbar)
         }
         isInstanceOf(AppCompatImageButton::class.java)
     }
 
-    val title = KTextView(matcher) {
+    val title = KTextView() {
         isDescendantOfA {
             withId(R.id.toolbar)
         }
         isInstanceOf(AppCompatTextView::class.java)
     }
 
-    val menu = KImageView(matcher) {
+    val menu = KImageView() {
         withContentDescription("More options")
     }
 
 
 
     val items =  KRecyclerView(
-        parent = matcher,
+
         builder = {
             withId(R.id.content_types_recycler)
         },
@@ -41,4 +48,5 @@ class Customize(matcher: Matcher<View>) : KRecyclerItem<Customize>(matcher) {
            itemType(::CustomizeItem)
         }
     )
+
 }
