@@ -8,15 +8,13 @@ import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.lesson8.SearchItem
 import org.wikipedia.R
-class SearchItem1(matcher: Matcher<View>) : KRecyclerItem<SearchItem>(matcher) {
+class SearchItemV2(matcher: Matcher<View>) : KRecyclerItem<SearchItemV2>(matcher) {
 
     val icon = KImageView(matcher) {
-        withIndex(0) {
-            isDescendantOfA { AppCompatImageView::class.java }
-        }
+        withContentDescription("Search Wikipedia")
     }
 
-    val text = KTextView(matcher){
+    val textSearch = KTextView(matcher){
         withText(R.string.search_hint)
     }
 
