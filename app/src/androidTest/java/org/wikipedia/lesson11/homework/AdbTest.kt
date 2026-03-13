@@ -9,6 +9,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.lesson8.homework.ExploreScreen
+import org.wikipedia.lesson8.homework.OfflineCard
 import org.wikipedia.lesson8.homework.SearchItemV2
 import org.wikipedia.lesson9.homework.OnboardingScreen
 import org.wikipedia.main.MainActivity
@@ -31,6 +32,8 @@ class AdbTest : TestCase() {
     @After
     fun teardown() {
         device.uiDevice.setOrientationNatural()
+        adbServer.performAdb("shell svc data enable")
+        adbServer.performAdb("shell svc wifi enable")
     }
 
     @Test
@@ -110,6 +113,43 @@ class AdbTest : TestCase() {
                             icon.isDisplayed()
                             textSearch.isDisplayed()
                             voiceIcon.isDisplayed()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    fun checkRetry() {
+        run {
+            step("Вырубили сеть") {
+                adbServer.performAdb("shell svc data disable")
+                adbServer.performAdb("shell svc wifi disable")
+                Thread.sleep(3000)
+            }
+            step("Проверили Retry и текст") {
+                ExploreScreen {
+                    items {
+                        childWith<OfflineCard> {
+                        } perform {
+                            retry.isDisplayed()
+                            textError.isDisplayed()
+                        }
+                    }
+                }
+            }
+            step("Включили сеть") {
+                adbServer.performAdb("shell svc data enable")
+                adbServer.performAdb("shell svc wifi enable")
+                Thread.sleep(3000)
+            }
+            step("Тап на Retry") {
+                ExploreScreen{
+                    items{
+                        childWith<OfflineCard> {
+                        } perform {
+                            retry.click()
                         }
                     }
                 }

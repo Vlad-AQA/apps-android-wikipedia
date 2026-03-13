@@ -4,6 +4,7 @@ import android.view.View
 import io.github.kakaocup.kakao.image.KImageView
 import org.wikipedia.R
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
+import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 
@@ -35,6 +36,14 @@ class FeaturedArticle(matcher: Matcher<View>) : KRecyclerItem<FeaturedArticle>(m
 
     val toDay = KTextView(matcher) {
         withId(R.id.footerActionButton)
+    }
+
+    val retry = KButton(matcher) {
+        withId(R.id.view_card_offline_button_retry)
+    }
+
+    val textError = KTextView(matcher) {
+        withText("Content cannot be loaded when offline")
     }
 
 

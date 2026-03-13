@@ -32,6 +32,7 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::InTheNews)
             itemType(::FeaturedArticle)
             itemType(::AnnouncementCard)
+            itemType(::OfflineCard)
         }
     )
 }
