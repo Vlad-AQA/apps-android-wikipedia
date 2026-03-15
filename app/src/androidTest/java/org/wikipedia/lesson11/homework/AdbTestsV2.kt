@@ -1,17 +1,16 @@
 package org.wikipedia.lesson11.homework
 
-import androidx.compose.ui.text.intl.Locale
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.lesson8.homework.ArticleCardScreen
 import org.wikipedia.lesson8.homework.ExploreScreen
 import org.wikipedia.lesson8.homework.FeaturedArticle
-import org.wikipedia.lesson8.homework.OfflineCard
 import org.wikipedia.lesson9.homework.OnboardingScreen
 import org.wikipedia.main.MainActivity
-
+import java.util.Locale
 
 class AdbTestsV2class : TestCase() {
 
@@ -61,22 +60,23 @@ class AdbTestsV2class : TestCase() {
 
     @Test
     fun checkLanguage() {
-        run {
-            OnboardingScreen {
-                step("Проверили что скип на английском") {
-                    skip { hasText("Skip") }
-                }
-                step("Сменили язык") {
-                    device.uiDevice.executeShellCommand("settings put system system_locales ru-Ru")
-                    Thread.sleep(3000)
-                    device.uiDevice.executeShellCommand("am start -n org.wikipedia.alpha/.main.MainActivity")
-                    Thread.sleep(3000)
-                }
-                step("Проверили что скип сменился на Пропустить") {
-                    skip { hasText("Пропустить") }
-                }
-
-            }
+        before(testName = "поменять язык приложения и проверить текст какой-нибу") {
+            device.language.switchInApp(locale = Locale.FRENCH)
+            Thread.sleep(3000)
+        }.after {
+            device.language.switchInApp(locale = Locale.ENGLISH)
+        }.run {
+            OnboardingScreen.skip.hasText(text = "Sauter")
         }
     }
+
+    @Test
+    fun checkActivities() {
+        OnboardingScreen.skip.click()
+        Assert.assertEquals(
+            "org.wikipedia.main.MainActivity",
+            device.activities.getResumed()?.javaClass?.name
+        )
+    }
 }
+

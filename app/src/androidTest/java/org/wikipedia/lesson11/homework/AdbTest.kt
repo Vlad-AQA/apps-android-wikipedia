@@ -9,7 +9,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.lesson8.homework.ExploreScreen
-import org.wikipedia.lesson8.homework.OfflineCard
 import org.wikipedia.lesson8.homework.SearchItemV2
 import org.wikipedia.lesson9.homework.OnboardingScreen
 import org.wikipedia.main.MainActivity
@@ -32,8 +31,6 @@ class AdbTest : TestCase() {
     @After
     fun teardown() {
         device.uiDevice.setOrientationNatural()
-        adbServer.performAdb("shell svc data enable")
-        adbServer.performAdb("shell svc wifi enable")
     }
 
     @Test
@@ -41,6 +38,10 @@ class AdbTest : TestCase() {
         run {
             step("Повернули девайс направо") {
                 device.uiDevice.setOrientationRight()
+                try {
+                    ExploreScreen.closeButton.click()
+                } catch (_: Exception) {
+                }
                 Assert.assertFalse(device.uiDevice.isNaturalOrientation)
             }
             step("Проверили что поиск виден на экране") {
@@ -69,10 +70,12 @@ class AdbTest : TestCase() {
             step("Выключили дисплей") {
                 device.uiDevice.sleep()
                 Assert.assertFalse(device.uiDevice.isScreenOn)
+                Thread.sleep(2000)
             }
             step("Включили дисплей") {
                 device.uiDevice.wakeUp()
                 Assert.assertTrue(device.uiDevice.isScreenOn)
+                Thread.sleep(2000)
             }
             step("Проверили блок поиска") {
                 ExploreScreen {
