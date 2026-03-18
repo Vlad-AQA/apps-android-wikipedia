@@ -6,14 +6,14 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.wikipedia.main.MainActivity
 
-class WebView : TestCase() {
+class WebViewTest : TestCase() {
 
     @get:Rule
     val testRule = ActivityScenarioRule(MainActivity::class.java)
 
     fun checkWebView() {
         run {
-            ArticalWebScreen {
+            WebScreen {
                 webView {
                     withElement(Locator.CLASS_NAME, "mw-page-title-main") {
                         scroll()

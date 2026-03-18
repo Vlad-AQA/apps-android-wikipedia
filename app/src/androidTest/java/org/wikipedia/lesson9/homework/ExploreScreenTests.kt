@@ -1,10 +1,9 @@
 package org.wikipedia.lesson9.homework
 
-import android.view.View
+
 import androidx.compose.ui.test.hasText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import  com.kaspersky.kaspresso.testcases.api.testcase.TestCase
-import org.hamcrest.Matcher
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.lesson8.homework.AnnouncementCard
