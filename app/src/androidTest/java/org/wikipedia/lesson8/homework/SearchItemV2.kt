@@ -1,12 +1,11 @@
 package org.wikipedia.lesson8.homework
 
 import android.view.View
-import androidx.appcompat.widget.AppCompatImageView
+import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
-import org.wikipedia.lesson8.SearchItem
 import org.wikipedia.R
 class SearchItemV2(matcher: Matcher<View>) : KRecyclerItem<SearchItemV2>(matcher) {
 
@@ -16,6 +15,10 @@ class SearchItemV2(matcher: Matcher<View>) : KRecyclerItem<SearchItemV2>(matcher
 
     val textSearch = KTextView(matcher){
         withText(R.string.search_hint)
+    }
+
+    val writeTextSearch = KEditText() {
+        withId(androidx.appcompat.R.id.search_src_text)
     }
 
     val voiceIcon = KImageView(matcher) {
