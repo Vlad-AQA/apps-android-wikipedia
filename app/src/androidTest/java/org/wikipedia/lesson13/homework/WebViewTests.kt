@@ -75,8 +75,8 @@ class WebViewTests : TestCase() {
                         "//*[@id=\"cite_ref-FOOTNOTEMurray202024-29_5-0\"]/a/span"
                     ) {
                         scroll()
-                        Thread.sleep(3000)
                         click()
+                        Thread.sleep(3000)
                     }
                 }
             }
@@ -84,7 +84,7 @@ class WebViewTests : TestCase() {
                 ReferencesScreen.title.hasText("Reference ")
             }
             step("Проверяем что ссылка под номером 5") {
-                ReferencesScreen.refId.hasText("5")
+                ReferencesScreen.refId.hasText("5.")
             }
             step("Тап на бек") {
                 device.uiDevice.pressBack()
