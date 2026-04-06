@@ -4,6 +4,8 @@ import androidx.compose.ui.test.hasText
 import androidx.test.espresso.web.webdriver.Locator
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.uiautomator.UiSelector
+import com.kaspersky.components.alluresupport.withForcedAllureSupport
+import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
@@ -16,7 +18,9 @@ import org.wikipedia.lesson9.homework.OnboardingScreen
 import org.wikipedia.main.MainActivity
 
 
-class WebViewTests : TestCase() {
+class WebViewTests : TestCase(
+    Kaspresso.Builder.withForcedAllureSupport()
+) {
 
     @get:Rule
     val testRule = ActivityScenarioRule(MainActivity::class.java)
@@ -72,7 +76,7 @@ class WebViewTests : TestCase() {
                 WebScreen.webView {
                     withElement(
                         Locator.XPATH,
-                        "//*[@id=\"cite_ref-FOOTNOTEMurray202024-29_5-0\"]/a/span"
+                        "//sup[contains(@class,'mw-ref')]//span[text()=5]"
                     ) {
                         scroll()
                         click()
@@ -88,13 +92,11 @@ class WebViewTests : TestCase() {
             }
             step("Тап на бек") {
                 device.uiDevice.pressBack()
-                Thread.sleep(3000)
             }
             step("Нашли 2ю ссылку с CSS=mw-redirect нажали на нее"){
                 WebScreen.webView{
                     withElement(Locator.XPATH,"//*[@id=\"pcs\"]/section[1]/p[4]/a[24]"){
                         scroll()
-                        Thread.sleep(3000)
                         click()
                     }
                 }
