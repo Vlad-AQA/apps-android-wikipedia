@@ -332,12 +332,14 @@ tasks.register("deleteLocalAllureResults", Delete) {
     delete file("build/allure-results")
 }
 
+def adb = "${android.sdkDirectory}/platform-tools/adb"
+
 // Загрузка отчётов с девайса в сборочную директорию
 tasks.register("pullAllureResults", Exec) {
     group = "verification"
     description = "Pulls allure-results from device to app/build"
     dependsOn tasks.named("deleteLocalAllureResults")
-    commandLine "adb", "pull", "/sdcard/Documents/allure-results", "build"
+    commandLine adb, "pull", "/sdcard/Documents/allure-results", "build"
     ignoreExitValue true
 }
 
@@ -345,7 +347,7 @@ tasks.register("pullAllureResults", Exec) {
 tasks.register("clearDeviceAllureResults", Exec) {
     group = "verification"
     description = "Clears allure-results directory on Android device"
-    commandLine "adb", "shell", "rm", "-rf", "/sdcard/Documents/allure-results"
+    commandLine adb, "shell", "rm", "-rf", "/sdcard/Documents/allure-results"
     ignoreExitValue true
 }
 
