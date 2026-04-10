@@ -1,4 +1,4 @@
-package org.wikipedia.lesson18
+package org.wikipedia.lesson18.homework
 
 import android.view.View
 import io.github.kakaocup.kakao.image.KImageView
@@ -12,13 +12,14 @@ import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.hamcrest.Matcher
 import org.wikipedia.lesson8.PagerItem
 import org.wikipedia.R
+import org.wikipedia.lesson18.BaseScreen
+import org.wikipedia.lesson18.invokeByIndex
+import org.wikipedia.lesson18.name
+import org.wikipedia.lesson18.withParent
 
-object OnboardingScreen : NamedScreen<OnboardingScreen>() {
+object OnboardingScreen : BaseScreen<OnboardingScreen>() {
 
     override val screenName = "Экран онбординга"
-    override val layoutId = null
-    override val viewClass = null
-
     val skipButton = KButton {
         withId(R.id.fragment_onboarding_skip_button)
     }.name(withParent("Кнопка Skip"))
@@ -37,9 +38,9 @@ object OnboardingScreen : NamedScreen<OnboardingScreen>() {
     ).name(withParent("Слайдер"))
 
     // В OnboardinScreen можем добавить обёртку для доступа к слайдам
-    fun page(index: Int, fnc: PagerItem.() -> Unit) {
-        pager.invokeByIndex(index, fnc)
-    }
+//    fun page(index: Int, fnc: PagerItem.() -> Unit) {
+//        pager.invokeByIndex(index, fnc)
+//    }
 
 //    // Было
 //    OnboardingScreen.pager.childAt<PagerItem>(2) {
