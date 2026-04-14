@@ -9,7 +9,7 @@ class DslTest : BaseTest() {
 
     @Test
     fun example() {
-        run() {
+        run {
             val steps = StepDefinitions(this)
             val action = Actions(steps)
             val verify = Verify(steps)

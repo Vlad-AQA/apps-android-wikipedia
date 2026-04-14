@@ -23,34 +23,41 @@ object ExploreScreen : BaseScreen<ExploreScreen>() {
 
     override val screenName = "Экран экплор"
 
-    val logo = KImageView {
-        withId(R.id.main_toolbar_wordmark)
-    }.name(withParent("Логотип"))
+    val logo by lazy {
+        KImageView {
+            withId(R.id.main_toolbar_wordmark)
+        }.name(withParent("Логотип"))
+    }
 
-    val closeButton = KImageView {
-        withId(R.id.closeButton)
-    }.name(withParent(("Кнопка закрыть")))
+    val closeButton by lazy {
+        KImageView {
+            withId(R.id.closeButton)
+        }.name(withParent(("Кнопка закрыть")))
+    }
 
-    val items = KRecyclerView(
+    val items by lazy {
+        KRecyclerView(
+            builder = {
+                withId(R.id.feed_view)
+            },
+            itemTypeBuilder = {
+                itemType(::SearchItemV2)
+                itemType(::CustomizeItem)
+                itemType(::DataItem)
+                itemType(::TopRead)
+                itemType(::InTheNews)
+                itemType(::FeaturedArticle)
+                itemType(::AnnouncementCard)
+                itemType(::OfflineCard)
+            }
+        ).name(withParent("Блоки экрана экплоре"))
+    }
 
-        builder = {
-            withId(R.id.feed_view)
-        },
-        itemTypeBuilder = {
-            itemType(::SearchItemV2)
-            itemType(::CustomizeItem)
-            itemType(::DataItem)
-            itemType(::TopRead)
-            itemType(::InTheNews)
-            itemType(::FeaturedArticle)
-            itemType(::AnnouncementCard)
-            itemType(::OfflineCard)
-        }
-    ).name(withParent("Блоки экрана экплоре"))
-
-    val moreTab = KView {
-        withContentDescription("More")
-    }.name(withParent("Таб More"))
+    val moreTab by lazy {
+        KView {
+            withContentDescription("More")
+        }.name(withParent("Таб More"))
+    }
 
     fun customizeBlock(text: String, fnc: CustomizeItem.() -> Unit) {
         items.invokeWithText("Customize", fnc )

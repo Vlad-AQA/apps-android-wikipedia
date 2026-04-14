@@ -11,9 +11,11 @@ object SettingsScreen : BaseScreen<SettingsScreen>() {
     override val screenName = "Экран настроек"
 
     val linkPreviewsSwitch = KCheckBox {
-        isDescendantOfA {
-            withMatcher(ViewMatchers.hasDescendant(ViewMatchers.withText("Show link previews")))
+        withIndex(0) {
+            isDescendantOfA {
+                withMatcher(ViewMatchers.hasDescendant(ViewMatchers.withText("Show link previews")))
+            }
+            isInstanceOf(android.widget.CompoundButton::class.java)
         }
-        isInstanceOf(android.widget.CompoundButton::class.java)
     }.name(withParent("Тогл Show link previews"))
 }
