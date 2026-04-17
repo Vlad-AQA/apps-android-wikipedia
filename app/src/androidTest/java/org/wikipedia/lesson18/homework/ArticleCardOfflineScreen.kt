@@ -8,7 +8,8 @@ import org.wikipedia.lesson18.BaseScreen
 import org.wikipedia.lesson18.name
 
 object ArticleCardOfflineScreen : BaseScreen<ArticleCardOfflineScreen>() {
-    override val screenName = "Акртикал офлайн экран"
+
+    override val screenName = "Артикал оффлайн экран"
 
     val retry = KButton {
         withText("Cannot connect to internet")

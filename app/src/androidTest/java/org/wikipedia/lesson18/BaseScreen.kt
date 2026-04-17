@@ -1,8 +1,10 @@
 package org.wikipedia.lesson18
 
 import com.kaspersky.kaspresso.screens.KScreen
+import org.wikipedia.lesson18.homework.ExploreScreen
 import org.wikipedia.lesson18.homework.OnboardingScreen.pager
 import org.wikipedia.lesson8.PagerItem
+import org.wikipedia.lesson18.homework.ExploreScreen.items
 
 abstract class BaseScreen <T : BaseScreen<T>> : KScreen<T>() {
 
@@ -19,4 +21,5 @@ abstract class BaseScreen <T : BaseScreen<T>> : KScreen<T>() {
     fun page(index: Int, fnc: PagerItem.() -> Unit) {
         pager.invokeByIndex(index, fnc)
     }
+
 }

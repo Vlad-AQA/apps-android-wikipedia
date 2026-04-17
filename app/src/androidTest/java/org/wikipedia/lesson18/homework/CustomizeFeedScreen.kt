@@ -35,12 +35,11 @@ object CustomizeFeedScreen : BaseScreen<CustomizeFeedScreen>() {
 
 
     val items =  KRecyclerView(
-
         builder = {
             withId(R.id.content_types_recycler)
         },
         itemTypeBuilder = {
             itemType(::CustomizeItem)
         }
-    ).name(withParent("Тогл контента"))
+    ).name(withParent("Блок тогл контента"))
 }

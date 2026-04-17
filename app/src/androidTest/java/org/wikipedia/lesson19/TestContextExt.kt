@@ -6,17 +6,17 @@ private val steps = mutableMapOf<String, StepsDsl<*>>()
 
 val TestContext<*>.action: Actions
     get() {
-        return steps[getId(this, "action")] as? Actions
-            ?: Actions(StepDefinitions(this)).also {
-                steps[getId(this,"action")] = it
-            }
+        return steps.getOrPut(getId(this, "action")) {
+            Actions(StepDefinitions(this))
+        } as Actions
 
     }
 
 val TestContext<*>.verify: Verify
     get() {
-        return steps[getId(this, "verify")] as? Verify
-            ?: Verify(StepDefinitions(this))
+        return steps.getOrPut(getId(this, "verify")) {
+            Verify(StepDefinitions(this))
+        } as Verify
     }
 
 private fun getId(testContext: TestContext<*>, stepType: String): String {

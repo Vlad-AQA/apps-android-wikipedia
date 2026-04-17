@@ -10,6 +10,7 @@ import org.hamcrest.Matchers.anyOf
 inline fun <reified T : KRecyclerItem<T>> KRecyclerView.getByIndex(index: Int): T {
     return childWith<T> {
         onPosition(index)
+
     }.name(withParent("$index"))
 }
 

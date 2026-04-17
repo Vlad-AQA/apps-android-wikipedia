@@ -82,7 +82,7 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
             itemTypeBuilder = {
                 itemType(::LanguageItem)
             }
-        ).name(withParent("Список языков"))
+        ).name(withParent("Блоки языков"))
     }
 }
 

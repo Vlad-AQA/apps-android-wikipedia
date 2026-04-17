@@ -1,0 +1,16 @@
+package org.wikipedia.lesson18.homework
+
+import android.view.View
+import io.github.kakaocup.kakao.check.KCheckBox
+import io.github.kakaocup.kakao.recycler.KRecyclerItem
+import org.hamcrest.Matcher
+import org.wikipedia.R
+
+class SettingsSwitchItem(matcher: Matcher<View>) : KRecyclerItem<SettingsSwitchItem>(matcher) {
+
+    val switcher by lazy {
+        KCheckBox(matcher) {
+            withId(R.id.switchWidget)
+        }
+    }
+}
