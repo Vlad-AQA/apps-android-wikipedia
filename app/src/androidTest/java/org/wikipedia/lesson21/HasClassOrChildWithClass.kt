@@ -31,6 +31,5 @@ class HasClassOrChildWithClass(private val expectedClass: Class<out View>) : Vie
         }
         return false
     }
-
     fun getResult() = result
 }

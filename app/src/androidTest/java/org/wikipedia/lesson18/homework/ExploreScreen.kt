@@ -57,6 +57,13 @@ object ExploreScreen : BaseScreen<ExploreScreen>() {
         }.name(withParent("Таб More"))
     }
 
+    val iconMoreTab by lazy {
+        KImageView {
+            withId(com.google.android.material.R.id.navigation_bar_item_icon_view)
+            isDescendantOfA{withContentDescription("More")}
+        }.name(withParent("Иконка таба More"))
+    }
+
     fun customizeBlock(fnc: CustomizeItem.() -> Unit) {
         items.invokeWithText("Customize", fnc )
     }
