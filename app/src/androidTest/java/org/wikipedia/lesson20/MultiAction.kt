@@ -32,6 +32,7 @@ class MultiAction(private val enableText: String) : ViewAction {
             is Button -> view.performClick()
             is Checkable -> view.isChecked = true
             is TextView -> view.performClick()
+            else -> view.performClick()
         }
     }
 }
