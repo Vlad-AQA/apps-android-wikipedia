@@ -19,7 +19,7 @@ object SettingsScreen : BaseScreen<SettingsScreen>() {
             },
             itemTypeBuilder = {
                 itemType(::SettingsSwitchItem)
-
+                itemType(::TermsOfUseItem)
             }
         ).name(withParent("Блоки экрана Settings"))
     }
