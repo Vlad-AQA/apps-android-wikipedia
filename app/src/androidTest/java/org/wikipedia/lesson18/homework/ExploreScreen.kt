@@ -15,6 +15,7 @@ import org.wikipedia.lesson8.homework.OfflineCard
 import org.wikipedia.lesson8.homework.TopRead
 import org.wikipedia.lesson18.invokeWithText
 import org.wikipedia.lesson18.name
+import org.wikipedia.lesson22.SearchWidget
 
 
 object ExploreScreen : BaseScreen<ExploreScreen>() {
@@ -51,6 +52,11 @@ object ExploreScreen : BaseScreen<ExploreScreen>() {
         ).name(withParent("Блоки экрана эксплор"))
     }
 
+    val searchWidget by lazy {
+        SearchWidget{
+            withId(R.id.search_container)
+        }.name(withParent("Виджет поиска"))
+    }
     val moreTab by lazy {
         KView {
             withContentDescription("More")
@@ -59,7 +65,6 @@ object ExploreScreen : BaseScreen<ExploreScreen>() {
 
     val iconMoreTab by lazy {
         KImageView {
-            withId(com.google.android.material.R.id.navigation_bar_item_icon_view)
             isDescendantOfA{withContentDescription("More")}
         }.name(withParent("Иконка таба More"))
     }

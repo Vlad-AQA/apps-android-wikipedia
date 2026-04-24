@@ -11,30 +11,33 @@ import org.wikipedia.lesson18.homework.TermsOfUseItem
 import org.wikipedia.lesson19.homework.MoreMenuScreen
 import org.wikipedia.lesson20.multiAction
 
-class TestSettings: BaseTest() {
+class TestSettings : BaseTest() {
 
     @Test
     fun checkSettingsSwitcher() {
-        OnboardingScreen.skipButton.multiAction()
-        try {
-            ExploreScreen.closeButton.multiAction()
-        } catch (_: Exception) {
-        }
-        ExploreScreen.moreTab.multiAction()
-        MoreMenuScreen.settingsButton.multiAction()
-        SettingsScreen.items.invokeAtIndexAndId<SettingsSwitchItem>(1,R.id.switchWidget) {
+        run {
+            OnboardingScreen.skipButton.multiAction()
             try {
-                switcher.isNotChecked()
-            } catch (_: Throwable) {
-                switcher.multiAction()
+                ExploreScreen.closeButton.multiAction()
+            } catch (_: Exception) {
             }
-            switcher.multiAction()
-            switcher.isChecked()
-        }
-        SettingsScreen.items.invokeAtIndexAndId<TermsOfUseItem>(2,R.id.right_icon, 50) {
-            title.hasText("Terms of use")
-        }
+            ExploreScreen.moreTab.multiAction()
+            MoreMenuScreen.settingsButton.multiAction()
+            SettingsScreen.items.invokeAtIndexAndId<SettingsSwitchItem>(1, R.id.switchWidget) {
+                try {
+                    switcher.isNotChecked()
+                } catch (_: Throwable) {
+                    switcher.multiAction()
+                }
+                switcher.multiAction()
+                switcher.isChecked()
+            }
+            //завернуть в метод на экране айтема
+            SettingsScreen.items.invokeAtIndexAndId<TermsOfUseItem>(2, R.id.right_icon, 50) {
+                title.hasText("Terms of use")
+            }
 
 
+        }
     }
 }

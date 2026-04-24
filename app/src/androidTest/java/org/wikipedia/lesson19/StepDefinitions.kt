@@ -4,6 +4,7 @@ import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
+import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 
 class StepDefinitions(private val testContext: TestContext<*>) {
@@ -39,6 +40,24 @@ class StepDefinitions(private val testContext: TestContext<*>) {
     fun isNotChecked(step: String, element: CheckableAssertions) {
         execute(step) {
             element.isNotChecked()
+        }
+    }
+
+    fun isEnabled(step: String, element: BaseAssertions) {
+        execute(step) {
+            element.isEnabled()
+        }
+    }
+
+    fun isNotEnabled(step: String, element: BaseAssertions) {
+        execute(step) {
+            element.isDisabled()
+        }
+    }
+
+    fun typeText(step: String, element: EditableActions, text: String) {
+        execute(step) {
+            element.typeText(text)
         }
     }
 
