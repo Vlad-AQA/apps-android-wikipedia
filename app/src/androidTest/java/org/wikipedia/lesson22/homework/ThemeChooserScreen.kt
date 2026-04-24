@@ -16,7 +16,7 @@ object ThemeChooserScreen : BaseScreen<ThemeChooserScreen>() {
 
     val focusModeWidget by lazy {
         FocusModeWidget {
-            withId(R.id.readingFocusModeContainer)
+            withId(com.google.android.material.R.id.design_bottom_sheet)
         }.name(withParent("Виджет Reading focus mode"))
     }
 
