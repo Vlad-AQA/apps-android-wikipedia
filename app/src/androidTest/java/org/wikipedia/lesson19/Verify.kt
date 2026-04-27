@@ -5,6 +5,7 @@ import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.getName
+import org.wikipedia.lesson23.KWebViewElement
 
 // Шаги проверок
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
@@ -63,4 +64,11 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
             element
         )
     }
+    fun isDisplayed(element: KWebViewElement) {
+        steps.isDisplayed(
+            "Проверяет, что отображается '${element.getName()}'",
+            element
+        )
+    }
+
 }

@@ -6,6 +6,7 @@ import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.text.TextViewAssertions
+import org.wikipedia.lesson23.KWebViewElement
 
 class StepDefinitions(private val testContext: TestContext<*>) {
 
@@ -64,6 +65,12 @@ class StepDefinitions(private val testContext: TestContext<*>) {
     private fun execute(step: String, fnc: () -> Unit) {
         testContext.step(step) {
             fnc()
+        }
+    }
+
+    fun isDisplayed(step: String, element: KWebViewElement) {
+        execute(step){
+            element.performWebViewAction { scroll() }
         }
     }
 }
