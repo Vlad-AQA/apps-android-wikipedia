@@ -1,8 +1,10 @@
 package org.wikipedia.lesson23.homework
 
+import io.github.kakaocup.compose.node.action.NodeActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
 import org.wikipedia.lesson18.getName
+import org.wikipedia.lesson24.getName
 
 class Actions(private val steps: StepDefinitions) : StepsDsl<Actions>() {
     override val self = this
@@ -21,5 +23,9 @@ class Actions(private val steps: StepDefinitions) : StepsDsl<Actions>() {
 
     fun click(element: KWebViewElement) {
         steps.click("Нажимает на '${element.getName()}'", element)
+    }
+
+    fun clickIfEnabled(element: NodeActions) {
+        steps.clickIfEnabled("click If Enabled '${element.getName()}'", element)
     }
 }

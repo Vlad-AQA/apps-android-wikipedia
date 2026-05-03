@@ -1,10 +1,13 @@
 package org.wikipedia.lesson23.homework
 
+import io.github.kakaocup.compose.node.action.NodeActions
+import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.getName
+import org.wikipedia.lesson24.getName
 
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
 
@@ -47,6 +50,14 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
             "Проверяет что текст в элементе '${element.getName()}' эквивалентен '$text'",
             element,
             text
+        )
+    }
+
+    fun assertTrimmedTextIsEquals(element: NodeAssertions, expected: String) {
+        steps.assertTrimmedTextIsEquals(
+            "Проверяет значение текста без проблеов '${(element as NodeActions).getName()}'",
+            element,
+            expected
         )
     }
 }
