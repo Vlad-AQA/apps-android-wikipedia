@@ -28,6 +28,10 @@ object OnboardingScreen : BaseScreen<OnboardingScreen>() {
         withId(R.id.fragment_onboarding_forward_button)
     }.name(withParent("Кнопка Continue"))
 
+    val addLanguageButton = KButton{
+        withId(R.id.addLanguageButton)
+    }.name(withParent("Кнопка добавления языка"))
+
     val pager = KViewPager2(
         builder = {
             withId(R.id.fragment_pager)
