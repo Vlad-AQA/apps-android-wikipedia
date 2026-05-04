@@ -34,6 +34,14 @@ object OnboardingScreen : KScreen<OnboardingScreen>() {
 
         }
     )
+    val languages = KRecyclerView(
+        builder = {
+            withId(R.id.languageList)
+        },
+        itemTypeBuilder = {
+            itemType(::LanguageItems8)
+        }
+    )
 }
 
 class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
@@ -52,7 +60,7 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
             withId(R.id.languageList)
         },
         itemTypeBuilder = {
-            itemType(::LanguageItem)
+            itemType(::LanguageItems8)
         }
     )
 
@@ -62,7 +70,7 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
 
 }
 
-class LanguageItem(matcher: Matcher<View>) : KRecyclerItem<LanguageItem>(matcher),
+class LanguageItems8(matcher: Matcher<View>) : KRecyclerItem<LanguageItems8>(matcher),
     TextViewAssertions
 
 

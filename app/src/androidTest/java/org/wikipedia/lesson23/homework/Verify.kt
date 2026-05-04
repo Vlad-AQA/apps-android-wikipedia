@@ -9,7 +9,7 @@ import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.getName
 import org.wikipedia.lesson24.getName
 
-class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
+class Verify(@PublishedApi internal val steps: StepDefinitions) : StepsDsl<Verify>() {
 
     override val self = this
 

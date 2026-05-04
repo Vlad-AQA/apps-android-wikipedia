@@ -14,7 +14,9 @@ inline fun <reified T : KRecyclerItem<T>> KRecyclerView.getByIndex(index: Int): 
     }.name(withParent("$index"))
 }
 
-inline fun <reified T : KRecyclerItem<T>> KRecyclerView.getByText(text: String): T {
+inline fun <reified T : KRecyclerItem<T>> KRecyclerView.getByText(
+    text: String,
+): T {
     return childWith<T> {
         withMatcher(
             anyOf(

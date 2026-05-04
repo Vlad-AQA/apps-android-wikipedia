@@ -1,8 +1,11 @@
 package org.wikipedia.lesson24
 
+import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
 import org.wikipedia.compose.extensions.uiTest.Tags.LANGUAGE_LIST
 
-class AddLanguageScreen : ComposeNamedScreenBase<AddLanguageScreen>() {
+class AddLanguageScreen(
+    semanticsProvider: SemanticsNodeInteractionsProvider
+) : ComposeNamedScreenBase<AddLanguageScreen>(semanticsProvider) {
     override val screenName = "Компоуз экран добавления языков"
 
     val items by lazy {

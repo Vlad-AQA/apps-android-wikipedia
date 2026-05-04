@@ -62,15 +62,15 @@ class StepDefinitions(private val testContext: TestContext<*>) {
         }
     }
 
+    fun isDisplayed(step: String, element: KWebViewElement) {
+        execute(step){
+            element.performWebViewAction { scroll() }
+        }
+    }
     private fun execute(step: String, fnc: () -> Unit) {
         testContext.step(step) {
             fnc()
         }
     }
 
-    fun isDisplayed(step: String, element: KWebViewElement) {
-        execute(step){
-            element.performWebViewAction { scroll() }
-        }
-    }
 }

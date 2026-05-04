@@ -13,7 +13,6 @@ import org.hamcrest.Matcher
 import org.wikipedia.lesson8.PagerItem
 import org.wikipedia.R
 import org.wikipedia.lesson18.BaseScreen
-import org.wikipedia.lesson18.invokeByIndex
 import org.wikipedia.lesson18.name
 import org.wikipedia.lesson18.withParent
 
@@ -40,6 +39,17 @@ object OnboardingScreen : BaseScreen<OnboardingScreen>() {
             itemType(::PagerItem)
         }
     ).name(withParent("Слайдер"))
+
+    val languages by lazy {
+        KRecyclerView(
+            builder = {
+                withId(R.id.languagesList)
+            },
+            itemTypeBuilder = {
+                itemType(::LanguageItems)
+            }
+        ).name(withParent("Блоки языков"))
+    }
 
     // В OnboardinScreen можем добавить обёртку для доступа к слайдам
 //    fun page(index: Int, fnc: PagerItem.() -> Unit) {
@@ -84,10 +94,10 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
                 withId(R.id.languagesList)
             },
             itemTypeBuilder = {
-                itemType(::LanguageItem)
+                itemType(::LanguageItems)
             }
         ).name(withParent("Блоки языков"))
     }
 }
 
-class LanguageItem(matcher: Matcher<View>) : KRecyclerItem<PagerItem>(matcher), TextViewAssertions
+class LanguageItems(matcher: Matcher<View>) : KRecyclerItem<LanguageItems>(matcher), TextViewAssertions

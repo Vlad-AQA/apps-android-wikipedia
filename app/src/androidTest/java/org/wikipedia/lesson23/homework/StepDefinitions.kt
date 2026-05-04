@@ -1,13 +1,15 @@
 package org.wikipedia.lesson23.homework
 
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
-import io.github.kakaocup.compose.intercept.operation.ComposeAction
 import io.github.kakaocup.compose.node.action.NodeActions
 import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.edit.EditableActions
+import io.github.kakaocup.kakao.recycler.KRecyclerItem
+import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.TextViewAssertions
+import org.wikipedia.lesson18.getByText
 import org.wikipedia.lesson24.assertTrimmedTextIsEquals
 import org.wikipedia.lesson24.clickIfEnabled
 
@@ -78,7 +80,14 @@ class StepDefinitions(private val testContext: TestContext<*>) {
 
     }
 
-    private fun execute(step: String, fnc: () -> Unit) {
+    inline fun <reified T : KRecyclerItem<T>>clickItemWithText(step: String, element: KRecyclerView, text: String ){
+        execute(step) {
+            element.getByText<T>(text).click()
+        }
+    }
+
+    @PublishedApi
+    internal fun execute(step: String, fnc: () -> Unit) {
         testContext.step(step) {
             fnc()
         }
