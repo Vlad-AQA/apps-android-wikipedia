@@ -7,15 +7,18 @@ import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.lesson18.name
+import org.wikipedia.lesson18.withParent
+
 class InTheNews(matcher: Matcher<View>) : KRecyclerItem<InTheNews>(matcher) {
 
     val headerText = KTextView(matcher) {
         withId(R.id.view_card_header_title)
-    }
+    }.name(withParent("Заголовок"))
 
     val menu = KImageView(matcher){
         withId(R.id.view_list_card_header_menu)
-    }
+    }.name(withParent("Иконка меню"))
 
     val items = KRecyclerView(
         parent = matcher,
@@ -25,5 +28,5 @@ class InTheNews(matcher: Matcher<View>) : KRecyclerItem<InTheNews>(matcher) {
         itemTypeBuilder = {
             itemType(::InTheNewsItem)
         }
-    )
+    ).name(withParent("Список новостей"))
 }

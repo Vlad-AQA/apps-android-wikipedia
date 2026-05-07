@@ -7,14 +7,16 @@ import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.lesson18.name
+import org.wikipedia.lesson18.withParent
 
 class OfflineCard(matcher: Matcher<View>) : KRecyclerItem<OfflineCard>(matcher) {
 
     val retry = KButton(matcher) {
         withId(R.id.view_card_offline_button_retry)
-    }
+    }.name(withParent("Кнопка retry"))
 
     val textError = KTextView(matcher) {
         withText("Content cannot be loaded when offline")
-    }
+    }.name(withParent("Текст ошибки"))
 }

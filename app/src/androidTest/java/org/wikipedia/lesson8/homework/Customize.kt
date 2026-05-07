@@ -1,52 +1,42 @@
 package org.wikipedia.lesson8.homework
 
-import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
-import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
-import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
-import org.hamcrest.Matcher
 import org.wikipedia.R
-import org.wikipedia.feed.view.FeedView
+import org.wikipedia.lesson18.BaseScreen
+import org.wikipedia.lesson18.name
 
-object Customize: KScreen<Customize>() {
+object Customize : BaseScreen<Customize>() {
 
-    override val layoutId: Int = 0
+    override val screenName = "Экран кастомизации ленты"
 
-    override val viewClass: Class<*> = FeedView::class.java
-
-
-    val back = KImageView() {
+    val back = KImageView {
         isDescendantOfA {
             withId(R.id.toolbar)
         }
         isInstanceOf(AppCompatImageButton::class.java)
-    }
+    }.name(withParent("Кнопка назад"))
 
-    val title = KTextView() {
+    val title = KTextView {
         isDescendantOfA {
             withId(R.id.toolbar)
         }
         isInstanceOf(AppCompatTextView::class.java)
-    }
+    }.name(withParent("Заголовок"))
 
-    val menu = KImageView() {
+    val menu = KImageView {
         withContentDescription("More options")
-    }
+    }.name(withParent("Иконка меню"))
 
-
-
-    val items =  KRecyclerView(
-
+    val items = KRecyclerView(
         builder = {
             withId(R.id.content_types_recycler)
         },
         itemTypeBuilder = {
-           itemType(::CustomizeItem)
+            itemType(::CustomizeItem)
         }
-    )
-
+    ).name(withParent("Список настроек"))
 }

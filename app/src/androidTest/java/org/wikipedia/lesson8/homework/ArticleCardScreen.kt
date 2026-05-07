@@ -1,30 +1,25 @@
 package org.wikipedia.lesson8.homework
 
-import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 import io.github.kakaocup.kakao.web.KWebView
 import org.wikipedia.R
-import org.wikipedia.feed.view.FeedView
+import org.wikipedia.lesson18.BaseScreen
+import org.wikipedia.lesson18.name
 
+object ArticleCardScreen : BaseScreen<ArticleCardScreen>() {
 
-object ArticleCardScreen: KScreen<ArticleCardScreen>() {
-
-    override val layoutId: Int = 0
-
-    override val viewClass: Class<*> = FeedView::class.java
-
+    override val screenName = "Экран карточки статьи"
 
     val retry = KButton {
         withText("Cannot connect to internet")
-    }
+    }.name(withParent("Кнопка retry"))
 
     val textError = KTextView {
         withText("Cannot connect to internet")
-    }
+    }.name(withParent("Текст ошибки"))
 
-    val webView = KWebView() {
+    val webView = KWebView {
         withId(R.id.page_web_view)
     }
-
 }

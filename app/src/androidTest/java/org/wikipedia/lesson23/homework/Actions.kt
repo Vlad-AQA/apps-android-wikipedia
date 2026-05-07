@@ -1,5 +1,6 @@
 package org.wikipedia.lesson23.homework
 
+import android.view.View
 import io.github.kakaocup.compose.node.action.NodeActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
@@ -33,5 +34,14 @@ class Actions(@PublishedApi internal val steps: StepDefinitions) : StepsDsl<Acti
 
     inline fun <reified T : KRecyclerItem<T>>clickItemWithText(element: KRecyclerView, text: String){
         steps.clickItemWithText<T>("Нажимает на айтем '$text' в '${element.getName()}'", element, text)
+    }
+
+    inline fun <reified T : KRecyclerItem<T>>invokeAtIndexAndClass(
+        element: KRecyclerView,
+        index: Int,
+        clazz: Class<out View>,
+        crossinline function: T.() -> Unit
+    ){
+        steps.invokeAtIndexAndClass<T>("Клик по айтему в '${element.getName()}' с индексом $index", element, index, clazz, function)
     }
 }

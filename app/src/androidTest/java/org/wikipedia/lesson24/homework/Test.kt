@@ -20,6 +20,8 @@ class Test: BaseTest() {
         run {
             action.click(OnboardingScreen.addLanguageButton)
             action.clickItemWithText<LanguageItems>(WikiLanguageScreen.wikiLanguagesList,"Add language")
+            // препод сказал что экран компоуза должен быть обьектом тогда мы достучимся как к обычному экрану
+            // семантики из конструктора класса крина компоуза не нужна так как мы передаем в бейз тест наши  рулы
             onComposeScreen<AddLanguageScreen>(testRule) {
                 items.invokeWithText<LanguageItem>("Deutsch"){
                     verify.assertTrimmedTextIsEquals(titleLanguage, "Deutsch")

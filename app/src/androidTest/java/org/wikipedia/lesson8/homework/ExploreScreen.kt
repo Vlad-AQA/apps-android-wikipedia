@@ -1,26 +1,24 @@
 package org.wikipedia.lesson8.homework
 
-import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import org.wikipedia.R
-import org.wikipedia.feed.view.FeedView
+import org.wikipedia.lesson18.BaseScreen
+import org.wikipedia.lesson18.name
 
-object ExploreScreen : KScreen<ExploreScreen>() {
+object ExploreScreen : BaseScreen<ExploreScreen>() {
 
-    override val layoutId: Int = R.layout.fragment_feed
-    override val viewClass: Class<*> = FeedView::class.java
+    override val screenName = "Экран Explore"
 
     val logo = KImageView {
         withId(R.id.main_toolbar_wordmark)
-    }
+    }.name(withParent("Логотип"))
 
     val closeButton = KImageView {
         withId(R.id.closeButton)
-    }
+    }.name(withParent("Кнопка закрытия"))
 
     val items = KRecyclerView(
-
         builder = {
             withId(R.id.feed_view)
         },
@@ -34,5 +32,5 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::AnnouncementCard)
             itemType(::OfflineCard)
         }
-    )
+    ).name(withParent("Лента"))
 }

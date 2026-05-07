@@ -14,7 +14,7 @@ class AddLanguageScreen(
                 hasTestTag(LANGUAGE_LIST)
             },
             {itemType(::LanguageItem)}
-        )
+        ).name(withParent("Блоки языков"))
     }
 
 

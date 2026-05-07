@@ -100,4 +100,6 @@ class PagerItem(matcher: Matcher<View>) : KViewPagerItem<PagerItem>(matcher) {
     }
 }
 
-class LanguageItems(matcher: Matcher<View>) : KRecyclerItem<LanguageItems>(matcher), TextViewAssertions
+class LanguageItems(matcher: Matcher<View>) : KRecyclerItem<LanguageItems>(matcher), TextViewAssertions{
+
+}
