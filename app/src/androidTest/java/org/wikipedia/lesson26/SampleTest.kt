@@ -17,12 +17,11 @@ class SampleTest : TestCase(
         stepWatcherInterceptors.removeIf {
             it is ScreenshotStepInterceptor
         }
-        stepWatcherInterceptors.add(ScreenshotOnlyFailIntercept(screenshots))
     }
 
 ) {
 
-    @get:Rule
+    @get:Rule(-1)
     val testRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test

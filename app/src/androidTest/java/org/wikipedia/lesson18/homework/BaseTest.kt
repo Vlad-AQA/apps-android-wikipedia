@@ -7,6 +7,7 @@ import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import io.github.kakaocup.compose.rule.KakaoComposeTestRule
 import org.junit.Rule
+import org.wikipedia.lesson27.ExampleRule
 import org.wikipedia.main.MainActivity
 
 open class BaseTest : TestCase(
@@ -15,6 +16,9 @@ open class BaseTest : TestCase(
         .apply { ComposeConfig.Builder.default(this) {} }
 
 ) {
+
+    @get:Rule
+    val baseRule = ExampleRule()
 
     @get:Rule(order = 1)
     val testRule = createAndroidComposeRule<MainActivity>()
