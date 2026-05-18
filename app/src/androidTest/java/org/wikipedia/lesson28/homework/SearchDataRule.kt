@@ -10,7 +10,10 @@ class SearchDataRule : TestRule {
 
     var testData: String = ""
 
-    override fun apply(base: Statement?, description: JUnitDescription?): Statement {
+    override fun apply(
+        base: Statement?,
+        description: JUnitDescription?
+    ): Statement {
         return object : Statement() {
             override fun evaluate() {
                 val descriptionValue = description
