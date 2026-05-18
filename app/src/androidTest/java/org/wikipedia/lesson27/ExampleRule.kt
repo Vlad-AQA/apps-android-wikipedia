@@ -44,7 +44,7 @@ class ExampleRule : TestRule {
 }
 
 object Config {
-    val testCases = listOf("1","2","3")
+    val testCases = listOf("1","2","3","4")
 }
 
 class SampleTest() {
